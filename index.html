@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>O Basico Sobre Linguagem C</h1>
+    <p>Irei nesse repositorio do github fazer um pequeno curso ensinando a base de programação em linguagem C para Universitarios.</p>
+    <p>C é uma linguagem de programação de baixo nivel, algo que tem suas vantagens (velocidade/eficiencia) e desvantagens(dificuldade de aprendizado).</p>
+    <h2>Codigo Base do C</h2>
+    <p>Todo codigo C necessariamente tem essas linhas de codigo.</p>
+    <pre><button class="copy-btn" onclick="copy('code-1')"></button><code class="c" id="code-1">
+#include &lt;stdio.h&gt;
+int main () {
+  // aqui deve estar o seu codigo.
+  return 0;
+}
+    </code></pre>
+    <ul>
+      <li>Na primeira linha incluimos um "biblioteca" de codigo C chamada stdio (Standard Input Output, tradizindo seria Entrada e Saida Padrão), no momento iremos ignora-la. </li>
+      <li>Na segunda linha estamos inicializando uma função main (Principal), por definição todo programa C ira ser inicializado pela função main. Entre os simbolos {} teremos todo o codigo que sera executado.</li>
+      <li>Na terceira linha temos um comentário de uma linha, os comentários serão ignorados pelo compilador do C ao executar o programa, isso é bom para fazer pequenas anotações no codigo.</li>
+      <li>No final da função main devemos sempre fazer o comando return 0;</li>
+    </ul>
+    <h2>Função printf</h2>
+    <p>Ao incluir stdio no seu programa, adiquirimos algumas funções, uma delas é a printf, que serve para mostrar algum texto no terminal.</p>
+    <pre><button class="copy-btn" onclick="copy('code-2')"></button><code class="c" id="code-2">
+#include &lt;stdio.h&gt;
+
+int main () {
+  printf("Olá Mundo!");
+  return 0;
+}
+    </code></pre>
+    <p>Todo texto deve ser escrito entre "". Experimente trocar o texto e executar o codigo novamente.</p>
+    <h2>Variaveis e Tipos de Dados</h2>
+    <p>Variavel é um local na memoria do computador onde guardamos dados necessarios para a execução do programa.</p>
+    <p>Em C uma variavel pode armazenar varios tipos de dados. Os 3 tipos de dados basicos principais:</p>
+    <ul>
+      <li>char (um único caractere)</li>
+      <li>int (numeros inteiros)</li>
+      <li>float (numeros reais, com casas decimais).</li>
+    </ul>
+    <p>Para criar/declarar uma variavel em C usamos a estrutura:</p>
+    <pre><button class="copy-btn" onclick="copy('code-23')"></button><code class="plain" id="code-23">tipo nomeVariavel;</code></pre>
+    <strong>Exemplo:</strong>
+    
+    <pre><button class="copy-btn" onclick="copy('code-3')"></button><code class="c" id="code-3">
+char letra;
+int numero;
+float pi;
+    </code></pre>
+    
+    <p>Podemos atribuir um valor à variaveis ja definidas usando o:</p>
+    <pre><button class="copy-btn" onclick="copy('code-24')"></button><code class="c" id="code-24">nomeVariavel = valor;</code></pre>
+    <strong>Exemplo:</strong>
+
+    <pre><button class="copy-btn" onclick="copy('code-4')"></button><code class="c" id="code-4">
+char letra;
+int numero;
+float pi;
+
+letra = 'M';
+numero = 10;
+pi = 3.14;
+    </code></pre>
+
+    <p><strong>Observações:</strong></p>
+    <ul>
+      <li>Diferentemente de um texto, um unico caractere deve ser colocado entre ''.</li>
+      <li>Note também que em vez de virgula deve-se usar "." para separar as casas decimais de um numero.</li>
+    </ul>
+    <p>Algumas outras variações de definições de variaveis:</p>
+
+    <pre><button class="copy-btn" onclick="copy('code-5')"></button><code class="c" id="code-5">
+int numero1, numero2, numero3;
+float pi = 3.14;
+    </code></pre>
+    <p><strong>Observações:</strong></p>
+    <ul>
+      <li>Na primeira linha definimos 3 variaveis do tipo inteira em uma unica linha.</li>
+      <li>Na segunda linha definimos a variavel pi e ao mesmo tempo atribuimos um valor à mesma.</li>
+    </ul>
+    <h2>Variaveis + Printf</h2>
+    <p>Vamos conectar os conhecimentos e usar o printf para mostrar valores de variaveis.</p>
+
+    <pre><button class="copy-btn" onclick="copy('code-6')"></button><code class="c" id="code-6">
+#include &lt;stdio.h&gt;
+int main () {
+  // Definindo variaveis necessárias
+  char letra = 'M';
+  int numero  = 10;
+  float pi = 3.14;
+  //Mostrando seus respectivos valores.
+  printf("O valor atribuido à variavel 'letra' é %c\n", letra);
+  printf("O valor atribuido à variavel 'numero' é %d\n", numero);
+  printf("O valor atribuido à variavel 'pi' é %f\n", pi);
+  return 0;
+}
+      </code></pre>
+
+    <ul>
+      <li>Utilizamos a marcação <strong>%c</strong> quando queremos substituir essa parte do texto por um valor do tipo char (a variavel letra).</li>
+      <li>Utilizamos a marcação <strong>%d</strong> quando queremos substituir essa parte do texto por um valor do tipo int (a variavel numero).</li>
+      <li>Utilizamos a marcação <strong>%f</strong> quando queremos substituir essa parte do texto por um valor do tipo float (a variavel pi).</li>
+    </ul>
+    <p><strong>Observação:</strong> no final de todos os textos tem um "\n", esse é um caractere especial que significa uma quebra de linha. </p>
+    <p>Experimente retirar essas quebras de linhas (\n) e executar o codigo, tente também adicionar deles e veja o resultado.</p>
+    <h2>Operações Matemáticas.</h2>
+    <p>Temos os operadores:</p>
+    <ul>
+    <li>Soma(+)</li>
+    <li>Subtração(-)</li>
+    <li>Multiplicação(*)</li>
+    <li>Divisão (/)</li>
+    <li>Resto da divisão (%)</li>
+    </ul>
+    <strong>Exemplo:</strong>
+    
+    <pre><button class="copy-btn" onclick="copy('code-7')"></button><code class="c" id="code-7">
+#include &lt;stdio.h&gt;
+int main () {
+  // Declarando variaves e atribuindo valores
+  int num1 = 5;
+  int num2 = 2;
+
+  //Efetuando as operações
+  int soma = num1 + num2;
+  int sub  = num1 - num2;
+  int mul  = num1 * num2;
+  int div = num1 / num2;
+  int resto = num1 % num2;
+  //Mostrando os resultados no terminal
+  printf("%d + %d = %d \n", num1, num2, soma);
+  printf("%d - %d = %d \n", num1, num2, sub);
+  printf("%d * %d = %d \n", num1, num2, mul);
+  printf("%d / %d = %d \n", num1, num2, div);
+  printf("%d %% %d = %d \n", num1, num2, resto);
+  return 0;
+}
+    </code></pre>
+    <p>Ao executar receberemos esse resultado:</p>
+    <pre><button class="copy-btn" onclick="copy('code-8')"></button><code class="plain" id="code-8">
+5 + 2 = 7
+5 - 2 = 3
+5 * 2 = 10
+5 / 2 = 2
+5 % 2 = 1
+    </code></pre>
+
+    <strong>Observações:</strong>
+    <ul>
+      <li>Note que a divisão de 5 / 2 teve como resutado 2 ao inves de 2.5. Em C a divisão de dois numeros inteiros deve ser inteiro. Será explicado como fazer a divisão da forma correta futuramente.</li>
+      <li>Uma novidade que não foi dita antes é que podemos utilizar varias marcações em um mesmo printf para mostrar varios dados</li>
+      <li>Note que o operador % é usado para os marcadores então na terceira linha usamos %% para dizer que queremos utilizar ele como caractere e não a sua funcionalidade da linguagem C.</li>
+    </ul>
+
+    <h2>Operadores + Atribuição</h2>
+    <p>Podemos operar com um valor de uma variavel e automaticamente ja atribuilo à mesma, utilizando dos seguintes operadores.</p>
+    <ul>
+      <li>Soma (+=)</li>
+      <li>Subtração (-=)</li>
+      <li>Multiplicação (*=)</li>
+      <li>Divisão (/=)</li>
+      <li>Resto da Divisão (%=)</li>
+    </ul>
+    <strong>Exemplo:</strong>
+    <pre><button class="copy-btn" onclick="copy('code-9')"></button><code class="c" id="code-9">
+#include &lt;stdio.h&gt;
+int main () {
+  int n = 10;
+  n += 5;      // n = n + 5;
+  n -= 3;      // n = n - 3;
+  n *= 2;      // n = n * 2;
+  n /= 2;      // n = n / 2;
+  n %= 2;      // n = n % 2;
+  return 0;
+}
+    </code></pre>
+    <p>Vamos analizar o codigo em cada linha.</p>
+    <ul>
+      <li>Na <strong>quarta</strong> linha atribuimos 10 à variavel n.</li>
+      <li>Na <strong>quinta</strong> somamos 5 à variavel n (n vale 15 agora).</li>
+      <li>Na <strong>sexta</strong> linha subtraimos 3 à variavel n (n vale 12 agora).</li>
+      <li>Na <strong>setima</strong> linha multiplicamos n por 2 (n vale 24 agora).</li>
+      <li>Na <strong>oitava</strong> linha dividimos n por 2 (agora n vale 12).</li>
+      <li>Na <strong>nona</strong> linha fazemos o resto da divisão de n por 2, (como n vale 12, o resto da divisão de 12 por 2 é 0, logo seu valor agora é 0).</li>
+    </ul>
+    <p>Note que ao lado de cada linha temos a operação equivalente na forma que aprendemos anteriormente.</p>
+    <p>Fica a cargo do leitor colocar printf entre as linhas que ocorrem as operações para verificar o valor de n em cada momento do codigo.</p>
+    
+    <h2>Operadores de autoincremento e autodecremento</h2>
+    <p>Podemos incrementar e decrementar o valor de uma variavel em 1 unidade usando os operadores ++ e --</p>
+    <p><strong>Exemplo:</strong></p>
+    
+    <pre><button class="copy-btn" onclick="copy('code-10')"></button><code class="c" id="code-10">
+#include &lt;stdio.h&gt;
+int main () {
+  int n = 10;
+  n++;
+  printf("Valor de n: %d\n", n);
+  n--;
+  printf("Valor de n: %d\n", n);
+}
+    </code></pre>
+
+    <h2>Resolvendo o Problema da Divisão.</h2>
+    <p>Vimos em sessões anteriores que a divisão entre inteiros é inteiro no C.</p>
+    <p>Uma das formas de conseguir a divisão real é usando float em todos as variaveis da operação (tanto num1 e num2 quanto div)</p>
+
+    <pre><button class="copy-btn" onclick="copy('code-11')"></button><code class="c" id="code-11">
+#include &lt;stdio.h&gt;
+int main () {
+  float num1 = 5;
+  float num2 = 2;
+  float div = num1 / num2;
+  printf("%f", div);
+
+  return 0;
+}
+    </code></pre>
+
+    <p>Mas também podemos fazer divisão real de dois numeros inteiros "type casting" (basicamente mudar o tipo dos valores).</p>
+
+    <pre><button class="copy-btn" onclick="copy('code-12')"></button><code class="c" id="code-12">
+#include &lt;stdio.h&gt;
+int main () {
+  int num1 = 5;
+  int num2 = 2;
+  float div = (float) num1 / num2;
+  printf("%f", div);
+
+  return 0;
+}
+    </code></pre>
+    <p>Nesse caso os valores são convertidos para float antes da divisão e por isso o resultado é real.</p>
+    
+    <h2>Função Scanf</h2>
+    <p>Outra função que adiquirimos quando incluimos stdio é a scanf. Essa função é usada para escanear uma resposta do usuario e salvar essa resposta em uma variavel ja definida anteriormente.</p>
+    <p><strong>Exemplo:</strong></p>
+    
+    <pre><button class="copy-btn" onclick="copy('code-13')"></button><code class="c" id="code-13">
+#include &lt;stdio.h&gt;
+int main () {
+  int idade;
+  float altura;
+  printf("Formulario: \n");
+
+  printf("Digite sua idade: ");
+  scanf("%d", &idade);
+  printf("Digite sua altura (utilize ponto para casas decimais): ");
+  scanf("%f", &altura);
+  printf("Respostas do Formulario\n");
+  printf("Idade: %d\n", idade);
+  printf("Altura: %.2f\n", altura);
+  return 0;
+}
+    </code></pre>
+    <p><strong>Observações:</strong></p>
+    <ul>
+      <li>Note que assim como no printf precisamos usar um marcador, mas dessa vez ele serve como um idenficiador do tipo da dado que sera escaneado.</li>
+      <li>Note que dessa vez usamos a notação %.2f no printf, isso faz com que mostre apenas duas casas decimais do valor float armazenado em altura. Experimente trocar 2 por outro numero e execute o codigo novamente.</li>
+    </ul>
+
+    <h2>Condicionais e Operadores Logicos</h2>
+    <p>Operações logicas podem retornar dois valores</p>
+    <ul>
+      <li>1 - Verdadeiro</li>
+      <li>0 - Falso</li>
+    </ul>
+    <p>Temos os seguintes operadores logicos:</p>
+    <ul>
+      <li>Igual (==)</li>
+      <li>Diferente (!=)</li>
+      <li>Menor (<)</li>
+      <li>Maior (>)</li>
+      <li>Menor ou Igual (<=)</li>
+      <li>Maior ou Igual (>=)</li>
+    </ul>
+    <p><strong>Exemplo:</strong></p>
+
+    <pre><button class="copy-btn" onclick="copy('code-14')"></button><code class="c" id="code-14">
+2 == 2;  // 1 Verdadeiro
+2 != 2;  // 0 Falso
+5 > 3;   // 1 Verdadeiro
+3 < 5;   // 0 Falso
+    </code></pre>
+    <p>Utilizando os operadores logicos juntamente com os condicionais podemos executar um bloco de codigo de acordo com uma verificação logica.</p>
+    <p>Para isso utilizaremos a instrução <strong>if e else</strong>.</p>
+
+    <pre><button class="copy-btn" onclick="copy('code-15')"></button><code class="c" id="code-15">
+if (condição){
+  //Codigo a ser executado se condição == 1
+} else {
+  //Codigo a ser executado se condição == 0
+}
+    </code></pre>
+
+    <p>Vamos fazer um exemplo pratico. Vamos fazer um programa que verifica se o valor de uma variavel é impar ou par. Temos que todos os numeros pares são divisiveis por 2, ou seja:</p>
+    <p>"Se n é par então n mod 2 = 0. Caso contrario n é impar"</p>
+    <p>Traduzindo essa ideia em forma de codigo temos:</p>
+    
+    <pre><button class="copy-btn" onclick="copy('code-16')"></button><code class="c" id="code-16">
+#include &lt;stdio.h&gt;
+int main () {
+  int n = 5;
+  if (n%2 == 0){
+    printf("%d é um numero par!\n", n);
+  } else {
+    printf("%d é um numero impar!\n", n);
+  }
+  return 0;
+}
+    </code></pre>
+    <p>Experimente mudar o valor da variavel n e execute o codigo novamente.</p>
+    <hr>
+    <p>Vamos agora fazer um programa que verifica a idade do usuario e diz se ele não pode votar, tem voto obrigatorio ou voto opicional.</p>
+    
+    <pre><button class="copy-btn" onclick="copy('code-17')"></button><code class="c" id="code-17">
+#include &lt;stdio.h&gt;
+int main () {
+  int idade = 5;
+  if (idade < 16) {
+    printf("Com essa idade você não pode votar");
+  } else if (idade < 18) {
+    printf("Com essa idade o voto é opcional");
+  } else if (idade < 70) {
+    printf("Com essa idade o voto é obrigatorio");
+  } else {
+    printf("Com essa idade o voto é opcional");
+  }
+  return 0;
+}
+    </code></pre>
+
+    <p>Dessa vez usamos else if pois queriamos verificar varias condições em seguida e caso nenhuma delas for verdadeira o else sera executado. Em uma estrutura de <strong>if ... else if ... else</strong> apenas um dos blocos sera executado.</p>
+    <h2>Laço de Repetição For</h2>
+    <p>O laço for é usado quando precisamos executar uma certa ação uma quantidade especifica de vezes. Por exemplo contar até 10, 100, 10000000, algo que seria inviavel fazer linha por linha.</p>
+    <p>A estrutura base do for é</p>
+    
+    <pre><button class="copy-btn" onclick="copy('code-18')"></button><code class="c" id="code-18">
+for (int variavel = valor; condição; atuilizaVariavel) {
+  // Bloco a ser repetido.
+}
+    </code></pre>
+    
+    <ul>
+      <li>O for inicializa uma variavel com um valor.</li>
+      <li>Enquanto a condição (envolvendo a variavel) for verdadeira o bloco sera executado.</li>
+      <li>A cada final de execução do bloco a variavel é atualizada de acordo com o que foi instruido.</li>
+    </ul>
+    <p>Vamos ver o exemplo de contar até 10.</p>
+
+    <pre><button class="copy-btn" onclick="copy('code-19')"></button><code class="c" id="code-19">
+#include &lt;stdio.h&gt;
+int main () {
+  for (int n = 1; n <= 10; n++){
+    printf("%d ", n);
+  }
+  return 0;
+}
+    </code></pre>
+
+    <p>Vamos analizar o codigo, ao entrar no for, ele define o valor de n = 1</p>
+    <ul>
+      <li>Apos isso ele verifica se n <= 10, que é verdadeiro</li>
+      <li>Apos isso ele executa printf e mostra o valor 1 no terminal.</li>
+      <li>Ao chegar no final do bloco a variavel n é atualizada com n++, ou seja n agora vale 2.</li>
+      <li>Apos isso ele retorna a verificar a condição n <= 10, tendo que n = 2 implica que n <= 10, ou seja verdadeiro.</li>
+      <li>Sendo assim executa o bloco. E assim sucessivamente até chegar no n 11, que falha a condição logo o for é encerrado sem executar o bloco.</li>
+    </ul>
+    <p>A saida da execução desse codigo será</p>
+
+    <pre><button class="copy-btn" onclick="copy('code-20')"></button><code class="plain" id="code-20">1 2 3 4 5 6 7 8 9 10</code></pre>
+
+    <h2>Laço de Repetição While</h2>
+    <p>O laço de repetição while é um pouco mais facil de ser compreendido. Ele executa um bloco de codigo enquanto uma condição for verdadeira.</p>
+    
+    <pre><button class="copy-btn" onclick="copy('code-21')"></button><code class="c" id="code-21">
+while(condição) {
+  // Bloco a ser repetido.
+}
+    </code></pre>
+
+    <p>Diferente do for que tem uma quantidade definida de repetições o while pode executar infinitamente se necessário.</p>
+    <p><strong>Exemplo:</strong></p>
+
+    <pre><button class="copy-btn" onclick="copy('code-22')"></button><code class="c" id="code-22">
+#include &lt;stdio.h&gt;
+int main () {
+  int n = 1;
+  while (n != 10) {
+    printf("Digite 10 para encerrar o looping: ");
+    scanf("%d", &n);
+  }
+  return 0;
+}
+    </code></pre>
+    <p>Experimente rodar e digitar numeros diferentes de 10 e no final digite 10.</p>
+  </main>
+  <footer>
+    <p>Feito por <a href="https://github.com/muriloinaciodev" target="_blank">Murilo Inácio</a></p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
